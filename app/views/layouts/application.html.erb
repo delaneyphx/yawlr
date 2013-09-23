@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Yawlr</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<!-- Rendering header on all pages -->
+<%= render 'layouts/header' %>
+
+<p class="notice"><%= notice %></p>
+
+<%= yield %>
+
+</body>
+</html>
