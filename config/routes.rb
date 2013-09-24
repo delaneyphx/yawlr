@@ -1,7 +1,10 @@
 Yawlr::Application.routes.draw do
   
-  
+  get "users/show"
   devise_for :users
+
+  resources :boats
+  
   # Static page routing
   root "pages#home"
   get "/about", to: 'pages#about'

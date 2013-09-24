@@ -1,0 +1,36 @@
+<h1><%= @user.username %></h1>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.username %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<h2>Boats</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Added to Yawlr</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @boats.each do |boat| %>
+      <tr>
+        <td><%= link_to boat.name, boat %></td>
+        <td><%= boat.created_at %></td>
+        <td><%= link_to 'Show', boat %></td>
+        <td><%= link_to 'Edit', edit_boat_path(boat) %></td>
+        <td><%= link_to 'Destroy', boat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
