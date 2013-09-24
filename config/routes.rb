@@ -1,7 +1,12 @@
 Yawlr::Application.routes.draw do
   
-  get "users/show"
+
   devise_for :users
+
+  resources :users
+  get "/profile", to: 'profiles#show'
+
+  resources :profiles
 
   resources :boats
   

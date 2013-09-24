@@ -23,7 +23,7 @@
   </thead>
 
   <tbody>
-    <% @boats.each do |boat| %>
+    <% @user.boats.each do |boat| %>
       <tr>
         <td><%= link_to boat.name, boat %></td>
         <td><%= boat.created_at %></td>

@@ -4,13 +4,13 @@
 <%= link_to "Support", support_path %> | 
 <% if user_signed_in? %>
 -- Howdy, <strong><%= current_user.username %></strong>
-<%= link_to "My Profile", users_show_path %> |
+<%= link_to "My Profile", current_user %> |
 <% if current_user.boats.any? %>
 <% current_user.boats.each do |boat| %>
-<%= link_to boat.name, boat %> |
+<%= link_to "Manage #{boat.name}", boat %> |
 <% end %>
 <% else %>
-<%= link_to "Create a Boat", new_boat_path %>
+<%= link_to "Create a Boat", new_boat_path %> |
 <% end %>
 <%= link_to "Edit Profile", edit_user_registration_path %> |
 <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>

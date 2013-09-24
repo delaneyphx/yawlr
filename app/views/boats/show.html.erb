@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>Added to YAWLr by <%= link_to current_user.username, users_show_path %> on <%= @boat.created_at %>
+<p>Added to YAWLr by <%= link_to(@boat.user.username, @boat.user) %> on <%= @boat.created_at %>
 </p>
 
 <p>

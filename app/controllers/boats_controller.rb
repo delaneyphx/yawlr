@@ -11,7 +11,6 @@ class BoatsController < ApplicationController
   # GET /boats/1
   # GET /boats/1.json
   def show
-  	@owner = @boat.user
   end
 
   # GET /boats/new
