@@ -1,4 +1,10 @@
-<h1>Project Management Page</h1>
+<% provide(:title, "#{@project.name} for #{@boat.name}") %>
+<h1><%= "#{@boat.name} | #{@project.name} Project" %></h1>
+
+<h2>Project Details</h2>
 <p><%= @boat.name %></p>
 <p><%= @project.name %></p>
 <p><%= @project.description %></p>
+<p><%= @project.status %></p>
+
+<p> <%= link_to "Edit this project", edit_boat_project_path(@project.boat, @project) %>

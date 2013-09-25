@@ -12,6 +12,10 @@
     <%= f.number_field :budget %>
   </p>
   <p>
+    <%= f.label :status %><br />
+    <%= f.select(:status,[['In Progress', 1], ['Completed', 2], ['Abandonded', 3]]) %>
+  </p>
+  <p>
     <%= f.submit "Create New Project for #{@boat.name}" %>
   </p>
 <% end %>
