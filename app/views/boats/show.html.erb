@@ -20,7 +20,9 @@
 <% @boat.projects.each do |p| %>
 <p><%= p.name %><br />
    <%= p.description %><br />
-</p><%= p.budget %><br />
+   <%= p.budget %><br />
+   <%= link_to "Manage #{p.name} Project", [p.boat, p] %><br />
+</p>
 <% end %>
 
 <h2>Add New Project</h2>
