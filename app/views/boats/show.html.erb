@@ -3,6 +3,8 @@
 <p>Added to YAWLr by <%= link_to(@boat.user.username, @boat.user) %> on <%= @boat.created_at %>
 </p>
 
+<h2>About</h2>
+
 <p>
   <strong>Name:</strong>
   <%= @boat.name %>
@@ -12,6 +14,20 @@
   <strong>Owner:</strong>
   <%= @boat.user.username %>
 </p>
+
+<h2>Maintence Log</h2>
+
+<% @boat.projects.each do |p| %>
+<p><%= p.name %><br />
+   <%= p.description %><br />
+</p><%= p.budget %><br />
+<% end %>
+
+<h2>Add New Project</h2>
+
+
+
+<%= render 'shared/projects' %>
 
 
 

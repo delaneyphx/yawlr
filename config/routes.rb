@@ -6,9 +6,10 @@ Yawlr::Application.routes.draw do
   resources :users
   get "/profile", to: 'profiles#show'
 
-  resources :profiles
 
-  resources :boats
+  resources :boats do
+    resources :projects
+  end
   
   # Static page routing
   root "pages#home"
