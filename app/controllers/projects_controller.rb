@@ -7,7 +7,7 @@ class ProjectsController < ApplicationController
 		if @project.save
 		redirect_to boat_path(@boat)
 		else
-			flash[:notice] = "You broke it!"
+		flash.now[:notice] = "You broke it!"
 		redirect_to boat_path(@boat)
 	end
 	end
@@ -17,6 +17,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def edit
+		@boat = Boat.find(params[:boat_id]) 
 	end
 
 	def update
