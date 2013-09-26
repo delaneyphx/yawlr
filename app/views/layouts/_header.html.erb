@@ -32,7 +32,8 @@
 		<% current_user.boats.each do |boat| %>
 		<li><%= link_to "Manage #{boat.name}", boat %></li>
 		<% end %>
-		<li><%= link_to "Something", '#' %></li>
+		<li class="divider"></li>
+		<li><%= link_to "Add New Boat", new_boat_path %></li>
 	<% else %>
 		<li><%= link_to "Create a Boat", new_boat_path %></li>
 	</ul>

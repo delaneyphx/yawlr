@@ -11,11 +11,11 @@
     <%= f.label :budget %><br />
     <%= f.number_field :budget %>
   </p>
-  <p>
+  <div class="large-4 columns">
     <%= f.label :status %><br />
-    <%= f.select(:status,[['In Progress'], ['Completed'], ['Abandonded']]) %>
-  </p>
+    <%= f.select(:status, [['In Progress'], ['Completed'], ['Abandonded']], class: "medium") %>
+  </div>
   <p>
-    <%= f.submit "Create New Project for #{@boat.name}" %>
+    <%= f.submit "Create New Project for #{@boat.name}", class: "large button" %>
   </p>
 <% end %>
