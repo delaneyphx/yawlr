@@ -1,21 +1,48 @@
-<nav>
-<%= link_to "YAWLr", root_path %> |
-<%= link_to "About", about_path %> |
-<%= link_to "Support", support_path %> | 
+<nav class='top-bar'>
+<ul class="title-area">
+	<li class='name'><h1><%= link_to "YAWLr", root_path %></h1></li>
+	<li class="toggle-topbar">Menu</li>
+</ul>
+
+<section class="top-bar-section">
+
+<ul class="left">
+    <li class="divider"></li>
+    <li class="active"><%= link_to "About", about_path %></li>
+    <li class="divider"></li>
+    <li class="active"><%= link_to "Support", support_path %></li>
+</ul>
+<ul class="right">
 <% if user_signed_in? %>
--- Howdy, <strong><%= current_user.username %></strong>
-<%= link_to "My Profile", current_user %> |
+<li class="has-dropdown"><%= link_to "My Profile", current_user %>
+	<ul class="dropdown">
+		<li><label>Profile Management</label></li>
+		<li><%= link_to "Edit Profile", edit_user_registration_path %> </li>
+		<li><%= link_to "My Profile", current_user %> </li>
+		<li class="divider"></li>
+		<li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+		<li class="divider"></li>
+	</ul>
+</li> 
 <% if current_user.boats.any? %>
-<% current_user.boats.each do |boat| %>
-<%= link_to "Manage #{boat.name}", boat %> |
-<% end %>
+
+<li class="has-dropdown"><%= link_to "My Boats", current_user %>
+	<ul class="dropdown">
+		<li><label>Yacht Management</label></li>
+		<% current_user.boats.each do |boat| %>
+		<li><%= link_to "Manage #{boat.name}", boat %></li>
+		<% end %>
+		<li><%= link_to "Something", '#' %></li>
+	<% else %>
+		<li><%= link_to "Create a Boat", new_boat_path %></li>
+	</ul>
+	</li>
+	<% end %>
 <% else %>
-<%= link_to "Create a Boat", new_boat_path %> |
+	<li class="divider"></li>
+    <li class="active"><%= link_to "Join YAWLr", new_user_registration_path %></li>
+    <li class="divider"></li>
+    <li class="active"><%= link_to "Sign In", new_user_session_path %></li>
 <% end %>
-<%= link_to "Edit Profile", edit_user_registration_path %> |
-<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-<% else %>
-<%= link_to "Join YAWLr", new_user_registration_path %> |
-<%= link_to "Sign In", new_user_session_path %>
-<% end %>
+</ul>
 </nav>
