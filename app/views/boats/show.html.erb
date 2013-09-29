@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>Added to YAWLr by <%= link_to(@boat.user.username, @boat.user) %> on <%= @boat.created_at %>
 </p>
 
@@ -15,15 +13,43 @@
   <%= @boat.user.username %>
 </p>
 
+<p>
+  <strong>Total Projects:</strong>
+  <%= @boat.projects.count %>
+</p>
+
 <h2>Maintence Log</h2>
 
-<% @boat.projects.each do |p| %>
-<p><%= p.name %><br />
-   <%= p.description %><br />
-   <%= p.budget %><br />
-   <%= link_to "Manage #{p.name} Project", [p.boat, p] %><br />
-</p>
-<% end %>
+<table class="table">
+	<thead>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Budget</th>
+		<th>Status</th>
+		<th>Manage</th>
+	</thead>
+
+	<tbody>
+		<% @boat.projects.each do |p| %>
+		<% if p.status == "Completed" %>
+		<tr class="success">
+		<% else %>
+		<% if p.status == "In Progress" %>
+		<tr class="info">
+		<% else %>
+		<tr class="error">
+		<% end %>
+		<% end %>
+			<td><%= p.name %></td>
+			<td><%= p.description %></td>
+			<td>$<%= p.budget %></td>
+			<td><%= p.status %></td>
+			<td><%= link_to "Manage #{p.name} Project", [p.boat, p] %></td>
+		</tr>
+		<% end %>
+	</tbody>
+
+</table>
 
 <h2>Add New Project</h2>
 
