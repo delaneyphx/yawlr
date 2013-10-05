@@ -1,7 +1,12 @@
 class ProjectsController < ApplicationController
 	  before_action :set_project, only: [:show, :edit, :update, :destroy]
 	  helper :projects
-	
+
+	def index
+	  	@boat = Boat.find(params[:boat_id])
+		@projects = @boat.projects.paginate(:page => params[:page], :per_page => 5)
+	end
+
 	def create
 		@boat = Boat.find(params[:boat_id])
 		@project = @boat.projects.create(project_params)

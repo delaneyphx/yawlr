@@ -1,7 +1,8 @@
+<% provide(:title, "#{@boat.name} Profile") %>
 <p>Added to YAWLr by <%= link_to(@boat.user.username, @boat.user) %> on <%= @boat.created_at %>
 </p>
 
-<h2>About</h2>
+<h2>About <%= @boat.name %></h2>
 
 <p>
   <strong>Name:</strong>
@@ -18,7 +19,16 @@
   <%= @boat.projects.count %>
 </p>
 
+<p>
+  <strong>Total Cost of Projects:</strong>
+  <%= number_to_currency(@boat.projects.sum('budget')) %>
+</p>
+
+<%= link_to "View All Boats", root_url, remote: true %>
+
 <h2>Maintence Log</h2>
+
+<%= will_paginate @projects %>
 
 <table class="table">
 	<thead>
@@ -26,11 +36,10 @@
 		<th>Description</th>
 		<th>Budget</th>
 		<th>Status</th>
-		<th>Manage</th>
 	</thead>
 
 	<tbody>
-		<% @boat.projects.each do |p| %>
+		<% @projects.each do |p| %>
 		<% if p.status == "Completed" %>
 		<tr class="success">
 		<% else %>
@@ -40,24 +49,36 @@
 		<tr class="error">
 		<% end %>
 		<% end %>
-			<td><%= p.name %></td>
-			<td><%= p.description %></td>
-			<td>$<%= p.budget %></td>
-			<td><%= p.status %></td>
 			<td><%= link_to "Manage #{p.name} Project", [p.boat, p] %></td>
+			<td><%= p.description %></td>
+			<td><%= number_to_currency(p.budget) %></td>
+			<td><%= p.status %></td>
 		</tr>
 		<% end %>
 	</tbody>
 
 </table>
 
-<h2>Add New Project</h2>
+<%= will_paginate @projects %>
+
+<h2>Add Project</h2>
+
+<%= link_to "New Project", "#myModal", role: "button", class: "btn", 'data-toggle' => "modal" %>
+
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Add New Project</h3>
+  	</div>
+  		<div class="modal-body">
+
+  				<%= render 'shared/projects' %>
+    
+  		</div>
 
 
 
-<%= render 'shared/projects' %>
-
-
+</div>
 
 
 <%= link_to 'Edit', edit_boat_path(@boat) %> |

@@ -37,12 +37,15 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body>
+    <div id="container">
 
     <%= render 'layouts/header' %>
     <%= render 'layouts/messages' %>
 
 
           <%= yield %>
+
+    </div>
 
       <footer>
         <p>&copy; YAWLr - Simple Yacht Management Platform</p>

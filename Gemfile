@@ -41,7 +41,13 @@ end
 
 gem 'devise'
 
+#Pagination
+
+gem 'will_paginate', '~> 3.0'
+gem 'bootstrap-will_paginate', '0.0.9'
+
 #Testing
+
 
 group :development, :test do
   gem 'rspec-rails', '2.13.1'

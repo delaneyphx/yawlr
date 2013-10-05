@@ -10,6 +10,11 @@
   <%= @user.email %>
 </p>
 
+<p>
+  <strong>Total Cash Blown on Boat Projects:</strong>
+  <%= number_to_currency(@user.projects.sum('budget')) %>
+</p>
+
 <h2>Followers</h2>
 
 <% @user ||= current_user %>
@@ -28,13 +33,17 @@
   </a>
 </div>
 
+<h2>Follow or Unfollow</h2>
+
+
 <h2>Boats</h2>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Added to Yawlr</th>
+      <th>Budget</th>
       <th></th>
       <th></th>
     </tr>
@@ -45,6 +54,7 @@
       <tr>
         <td><%= link_to boat.name, boat %></td>
         <td><%= boat.created_at %></td>
+        <td><%= number_to_currency(boat.projects.sum('budget')) %></td>
         <td><%= link_to 'Show', boat %></td>
         <td><%= link_to 'Edit', edit_boat_path(boat) %></td>
         <td><%= link_to 'Destroy', boat, method: :delete, data: { confirm: 'Are you sure?' } %></td>

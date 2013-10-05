@@ -11,6 +11,7 @@ class BoatsController < ApplicationController
   # GET /boats/1
   # GET /boats/1.json
   def show
+    @projects = @boat.projects.paginate(:page => params[:page], :per_page => 5).order('created_at DESC')
   end
 
   # GET /boats/new

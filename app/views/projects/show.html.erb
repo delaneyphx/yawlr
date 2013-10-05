@@ -7,6 +7,7 @@
 <p><%= @project.name %></p>
 <p><%= @project.description %></p>
 <p><%= @project.status %></p>
+<p><%= number_to_currency(@project.budget) %></p>
 
 
 <p> <%= link_to "Edit this project", edit_boat_project_path(@project.boat, @project) %>
